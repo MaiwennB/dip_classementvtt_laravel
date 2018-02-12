@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Associations;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/asso', function (Request $request) {
+Route::get('/associations', function (Request $request) {
     return Associations::all();
 });
+Route::post('/associations','AssociationsController@store');
+Route::put('/associations/{idAsso}','AssociationsController@update');
+Route::delete('/associations/{idAsso}','AssociationsController@destroy');
