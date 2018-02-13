@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AssociationS extends Controller
+class TempsController extends Controller
 {
-    //
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,7 +14,6 @@ class AssociationS extends Controller
     public function index()
     {
         //
-        return Associations::all();
     }
 
     /**
@@ -37,19 +35,15 @@ class AssociationS extends Controller
     public function store(Request $request)
     {
         //
-        $association = new Associations;
-        $association->label=$request->label;
-        $association->save();
-        return Associations::find($association->idAsso);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $idAsso
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idAsso)
+    public function show($id)
     {
         //
     }
@@ -57,10 +51,10 @@ class AssociationS extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $idAsso
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($idAsso)
+    public function edit($id)
     {
         //
     }
@@ -69,31 +63,22 @@ class AssociationS extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $idAsso
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //
-        $associations = new Associations;
-        $associations = Associations::findOrFail($request->idAsso);
-        $associations->label=$request->label;
-        $associations->isDone=$request->isDone;
-        $associations->save();
-        return Associations::find($associations->idAsso);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $idAsso
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         //
-        $associations = Associations::findOrFail($request->idAsso);
-        $association->delete()
-        return $request->idAsso;
     }
 }

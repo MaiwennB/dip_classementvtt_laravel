@@ -14,7 +14,7 @@ class CreateTempsTable extends Migration
     public function up()
     {
         Schema::create('temps', function (Blueprint $table) {
-            $table->increments('idTemps');
+            $table->increments('id');
             $table->time('temps');
             $table->integer('idPiste')->unsigned();
             $table->integer('idAdh')->unsigned();

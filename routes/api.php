@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Associations;
+Use App\Associations;
+Use App\Adherents;
+Use App\Pistes;
+Use App\Temps;
+
 
 /*
 |--------------------------------------------------------------------------
