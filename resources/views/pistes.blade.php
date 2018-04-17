@@ -11,6 +11,20 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     
+                    @foreach ($associations as $association)
+                    @if ($association->idUser == Auth::user()->id)
+                    <form>    
+                    <h2>Nouvelle piste</h2>
+                        Nom : <input></br>
+                        Description : <input></br>
+                        URL Photo : <input></br>
+                        <input type='submit'>
+                    </form>
+                    </br>
+
+                    @endif
+                    @endforeach
+
                     Piste : 
                     <form id="formulaire">
                     <select id="listpistes" name='idPiste'>
@@ -24,16 +38,6 @@
                     </form>
                     </br>
 
-
-                    @foreach ($associations as $association)
-                    @if ($association->id == Auth::user()->id)
-                        <h2>Nouvelle piste</h2>
-                        Nom : <input></br>
-                        Description : <input></br>
-                        URL Photo : <input></br>
-
-                    @endif
-                    @endforeach
 
                     
                     @if ($piste1 != null)
@@ -99,7 +103,7 @@
                 font-family: 'Raleway', sans-serif;
             }
             body {
-                background-image:url("https://pre00.deviantart.net/e971/th/pre/i/2013/164/6/8/hexagonal_cube_pattern_thingie_by_black_light_studio-d68vloo.png");
+                background-image:url("http://www.ilovebicyclette.com/wp-content/uploads/2015/06/World-Cup-Leogang-2015.3.jpg");
                 color: #636b6f;
                 background-repeat: repeat;
                 background-color:#636b6f;
