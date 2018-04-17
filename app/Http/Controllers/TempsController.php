@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Temps;
+use App\Pistes;
 
 class TempsController extends Controller
 {
@@ -43,7 +44,9 @@ class TempsController extends Controller
         $temps->idPiste=$request->idPiste;
         $temps->idAdh=$request->idAdh;
         $temps->save();
-        return Temps::find($temps->id);
+        $piste1=Pistes::find($request->idPiste);
+        return view('home');
+        // return Temps::find($temps->id);
     }
 
     /**

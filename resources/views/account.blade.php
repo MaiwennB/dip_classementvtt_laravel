@@ -55,9 +55,9 @@
                         </tr>
                     </table>
                     <br>
-                    <H3>Mes temps</H3>
+                    <H2>Mes temps</H2>
                     @foreach ($pistes as $piste)
-                        <H4>{{ $piste->nomPiste }}</H4>
+                        <H3>{{ $piste->nomPiste }}</H3>
                         <table class="time">
                             <tr class="time">
                                 <td class="time"><h4>Temps</h4></td>
@@ -65,10 +65,12 @@
                             </tr>
                             @foreach ($temps as $tps)
                             @if ($tps->idAdh == $adherent->idAdh)
+                            @if($tps->idPiste == $piste->idPiste)
                             <tr class="time">
                                 <td class="time">{{$tps->temps}}</td>
                                 <td class="time">{{$tps->created_at}}</td>
                             </tr>
+                            @endif
                             @endif
                             @endforeach
                         </table>

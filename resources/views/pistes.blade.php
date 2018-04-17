@@ -44,11 +44,13 @@
                             {{ Auth::user()->id }} -->
                     
                     <form id="formulaire1" action="{{ route('store')}}" method=POST>
-                    <!-- @csrf     -->
-                    <h2>Nouveau temps</h2>                   
+                    @csrf    
+                    <h2>Nouveau temps</h2>
+                                          
                         Temps : <input  name="temps" type="time" step="2" value="00:00:00">
                         <input type="hidden" name="idAdh" value="{{ $adherent->idAdh }}">
-                        <input type="hidden" name="idAdh" value="{{ $piste1->idPiste }}">
+                        <input type="hidden" name="idPiste" value="{{ $piste1->idPiste }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type='submit'></br>
                     </form>
 
