@@ -12,7 +12,7 @@
                 <div class="panel-body">
 
                     @foreach ($associations as $association)
-                    @if ($association->id == Auth::user()->id)
+                    @if ($association->idUser == Auth::user()->id)
                         <h2>Mon compte Association</h2>
                         <table>
                         <tr>
@@ -29,6 +29,35 @@
                             <td><h4>{{ $association->nomAsso }}</h4></td>
                         </tr>
                     </table>
+
+                    <h4>Pistes :</h4>
+                        <h4>
+                            <ul>
+                        @foreach ($pistes as $piste)
+                        @if($piste->idAsso == $association->idAsso)
+                            @if($piste->idAsso == $association->idAsso)
+                            <li>{{ $piste->nomPiste }}</li>
+                            @endif
+                        @endif
+                        @endforeach
+                            </ul>
+                        </h4>
+
+                        <h4>Adherents :</h4>
+                        <h4>
+                            <ul>
+                        @foreach ($adherents as $adherent)
+                        @if($adherent->idAsso == $association->idAsso)
+                            @foreach ($users as $user)
+                            @if($user->id == $adherent->id)
+                            <li>{{ $user->name }}</li>
+                            @endif
+                            @endforeach
+                        @endif
+                        @endforeach
+                            </ul>
+                        </h4>
+
                     @endif
                     @endforeach
 
