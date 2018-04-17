@@ -13,11 +13,13 @@
                     
                     @foreach ($associations as $association)
                     @if ($association->idUser == Auth::user()->id)
-                    <form>    
+                    <form  id="formulaire2" action="{{ route('create')}}" method=POST>    
                     <h2>Nouvelle piste</h2>
-                        Nom : <input></br>
-                        Description : <input></br>
-                        URL Photo : <input></br>
+                        Nom : <input name="nomPiste"></br>
+                        Description : <input name="Description"></br>
+                        URL Photo : <input name="urlPhoto"></br>
+                        <input type="hidden" name="idAsso" value="{{ $association->idAsso }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type='submit'>
                     </form>
                     </br>
@@ -44,14 +46,10 @@
 
                     @foreach ($adherents as $adherent)
                     @if ($adherent->id == Auth::user()->id)
-                            <!-- {{ $adherent->id }}
-                            {{ Auth::user()->id }} -->
-                    
-                    <form id="formulaire1" action="{{ route('store')}}" method=POST>
-                    @csrf    
+                    <form id="formulaire1" action="{{ route('store')}}" method=POST>   
                     <h2>Nouveau temps</h2>
                                           
-                        Temps : <input  name="temps" type="time" step="2" value="00:00:00">
+                        Temps : <input  name="temps" type="time" step="1" value="00:00:00">
                         <input type="hidden" name="idAdh" value="{{ $adherent->idAdh }}">
                         <input type="hidden" name="idPiste" value="{{ $piste1->idPiste }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

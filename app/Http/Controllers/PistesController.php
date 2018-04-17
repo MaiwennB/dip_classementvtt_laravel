@@ -67,7 +67,8 @@ class PistesController extends Controller
         $piste->Description=$request->Description;
         $piste->idAsso=$request->idAsso;
         $piste->save();
-        return Pistes::find($piste->idPiste);
+        return view('account');
+        // return Pistes::find($piste->idPiste);
     }
 
     /**
