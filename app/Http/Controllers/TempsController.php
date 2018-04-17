@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Temps;
 
 class TempsController extends Controller
 {
@@ -14,6 +15,8 @@ class TempsController extends Controller
     public function index()
     {
         //
+        $temps=Temps::all();
+        return view('temps',compact('temps'));
     }
 
     /**
@@ -35,6 +38,12 @@ class TempsController extends Controller
     public function store(Request $request)
     {
         //
+        $temps = new Temps;
+        $temps->temps=$request->temps;
+        $temps->idPiste=$request->idPiste;
+        $temps->idAdh=$request->idAdh;
+        $temps->save();
+        return Temps::find($temps->id);
     }
 
     /**
@@ -66,9 +75,16 @@ class TempsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $temps = new Temps;
+        $temps = Temps::findOrFail($request->id);
+        $temps->temps=$request->temps;
+        $temps->idPiste=$request->idPiste;
+        $temps->idAdh=$request->idAdh;
+        $temps->save();
+        return Temps::find($temps->id);
     }
 
     /**
@@ -77,8 +93,11 @@ class TempsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $temps = Temps::findOrFail($request->id);
+        $temps->delete();
+        return $request->id;
     }
 }

@@ -74,7 +74,7 @@ class AssociationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idAsso)
+    public function update(Request $request)
     {
         //
         $association = new Associations;
@@ -92,7 +92,7 @@ class AssociationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idAsso)
+    public function destroy(Request $request)
     {
         //
         $association = Associations::findOrFail($request->idAsso);

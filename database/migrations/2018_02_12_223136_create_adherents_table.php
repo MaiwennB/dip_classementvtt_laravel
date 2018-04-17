@@ -15,15 +15,13 @@ class CreateAdherentsTable extends Migration
     {
         Schema::create('adherents', function (Blueprint $table) {
             $table->increments('idAdh');
-            $table->string('nomAdh');
-            $table->string('loginAdh');
-            $table->string('mdpAdh');
             $table->integer('idAsso')->unsigned();
+            $table->integer('id')->unsigned();
             $table->timestamps();
         });
         Schema::table('adherents', function (Blueprint $table) {
             $table->foreign('idAsso')->references('idAsso')->on('associations');
-            
+            $table->foreign('id')->references('id')->on('users');
           });
     }
 

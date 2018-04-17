@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Adherents extends Model
 {
     //
+    protected $primaryKey = 'idAdh';
 }

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Adherents;
+use App\User;
+use App\Associations;
+use App\Pistes;
+use App\Temps;
 
 class AdherentsController extends Controller
 {
@@ -13,7 +18,13 @@ class AdherentsController extends Controller
      */
     public function index()
     {
-        //
+        $adherents=Adherents::all();
+        $associations=Associations::all();
+        $users=User::all();
+        $pistes=Pistes::all();
+        $temps=Temps::all();
+        
+        return view('account',['adherents'=>$adherents, 'users'=>$users, 'associations'=>$associations, 'pistes'=>$pistes, 'temps'=>$temps]);
     }
 
     /**
@@ -35,6 +46,13 @@ class AdherentsController extends Controller
     public function store(Request $request)
     {
         //
+        $adherent = new Adherents;
+        $adherent->nomAdh=$request->nomAdh;
+        $adherent->loginAdh=$request->loginAdh;
+        $adherent->mdpAdh=$request->mdpAdh;
+        $adherent->idAsso=$request->idAsso;
+        $adherent->save();
+        return Adherents::find($adherent->idAdh);
     }
 
     /**
@@ -66,9 +84,17 @@ class AdherentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $adherent = new Adherents;
+        $adherent = Adherents::findOrFail($request->idAdh);
+        $adherent->nomAdh=$request->nomAdh;
+        $adherent->loginAdh=$request->loginAdh;
+        $adherent->mdpAdh=$request->mdpAdh;
+        $adherent->idAsso=$request->idAsso;
+        $adherent->save();
+        return Adherents::find($adherent->idAdh);
     }
 
     /**
@@ -77,8 +103,18 @@ class AdherentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $adherent = Adherents::findOrFail($request->idAdh);
+        $adherent->delete();
+        return $request->idAdh;
+    }
+
+    public function login(Request $request)
+    {
+        //
+        $adherent = Adherents::where('id',$request->id)->first();
+        return Adherents::find($adherent->idAdh);
     }
 }
