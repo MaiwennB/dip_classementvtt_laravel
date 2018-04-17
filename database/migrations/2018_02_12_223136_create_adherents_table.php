@@ -23,6 +23,27 @@ class CreateAdherentsTable extends Migration
             $table->foreign('idAsso')->references('idAsso')->on('associations');
             $table->foreign('id')->references('id')->on('users');
           });
+          DB::table('adherents')->insert([
+            'idAdh'=>'1',
+            'idAsso' => '1',
+            'id' => '4',
+        ]);
+        DB::table('adherents')->insert([
+            'idAdh'=>'2',
+            'idAsso' => '3',
+            'id' => '5',
+        ]);
+        DB::table('adherents')->insert([
+            'idAdh'=>'3',
+            'idAsso' => '2',
+            'id' => '6',
+
+        ]);
+        DB::table('adherents')->insert([
+            'idAdh'=>'4',
+            'idAsso' => '1',
+            'id' => '7',
+        ]);
     }
 
     /**
