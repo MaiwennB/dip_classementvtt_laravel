@@ -101,23 +101,26 @@
                                 <td><h3 class="caseMain">Temps</h3></td>
                                 <td><h3 class="caseMain">Date</h3></td>
                             </tr>
+                            <?php $i=0 ?>
                             @foreach ($temps as $tps)
                             @if ($tps->idAdh == $adherent->idAdh)
                             @if($tps->idPiste == $piste->idPiste)
+                            <?php $i++ ?>
                             <tr>
                             
                                 <td><h3 class="case">{{$tps->temps}}</h3></td>
                                 <td><h3 class="case">{{$tps->created_at}}</h3></td>
                             </tr>
                             
-                            @else
-                            <tr>
                             
-                                <td><h3 class="case">Pas de temps pour cette piste</h3></td>
-                            </tr>
                             @endif
                             @endif
                             @endforeach
+                            @if($i==0)
+                            <tr>
+                                <td><h3 class="case">Pas de temps pour cette piste</h3></td>
+                            </tr>
+                            @endif
                         </table>
                         </br>
                     @endforeach
