@@ -105,8 +105,15 @@
                             @if ($tps->idAdh == $adherent->idAdh)
                             @if($tps->idPiste == $piste->idPiste)
                             <tr>
+                            
                                 <td><h3 class="case">{{$tps->temps}}</h3></td>
                                 <td><h3 class="case">{{$tps->created_at}}</h3></td>
+                            </tr>
+                            
+                            @else
+                            <tr>
+                            
+                                <td><h3 class="case">Pas de temps pour cette piste</h3></td>
                             </tr>
                             @endif
                             @endif
