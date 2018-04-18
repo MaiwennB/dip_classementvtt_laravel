@@ -71,6 +71,7 @@
                     @foreach ($adherents as $adherent)
                     @if ($adherent->id == Auth::user()->id)
                     <H1>Mon compte</H1>
+                    <div class="blop">
                     <table>
                         <tr>
                             <td><h3>Email: </h3></td>
@@ -89,8 +90,10 @@
                             @endforeach
                         </tr>
                     </table>
+                    </div>
                     <br>
                     <H2>Mes temps</H2>
+                    <div class="blop">
                     @foreach ($pistes as $piste)
                         <H3>{{ $piste->nomPiste }}</H3>
                         <table>
@@ -111,6 +114,7 @@
                         </table>
                         </br>
                     @endforeach
+                    </div>
 
                     @endif
                     @endforeach
