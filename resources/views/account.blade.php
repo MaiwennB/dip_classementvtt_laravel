@@ -14,51 +14,55 @@
                     @foreach ($associations as $association)
                     @if ($association->idUser == Auth::user()->id)
                     <H1>Espace association</H1>
-                    <table>
-                        <tr>
-                            <a href="{{$association->site}}"><img width="500px" src="{{$association->logoAsso}}" ></img></a>
-                        <tr>
-                        <tr>
-                            <td><h3>Association :</h3></td>
-                            <td><h3>{{ $association->nomAsso }}</h3></td>
-                        </tr>
-                        <tr>
-                            <td><h3>Email: </h3></td>
-                            <td><h3>{{ Auth::user()->email }}</h3></td>
-                        </tr>
-                        <tr>
-                            <td><h3>Site: </h3></td>
-                            <td><h3><a href="{{$association->site}}">{{$association->site}}</a></h3></td>
-                        </tr>
-                    </table>
-
-                    <h3>Pistes :</h3>
-                        <h3>
-                            <ul>
-                        @foreach ($pistes as $piste)
-                        @if($piste->idAsso == $association->idAsso)
-                            @if($piste->idAsso == $association->idAsso)
-                            <li>{{ $piste->nomPiste }}</li>
-                            @endif
-                        @endif
-                        @endforeach
-                            </ul>
-                        </h3>
-
-                        <h3>Adherents :</h3>
-                        <h3>
-                            <ul>
-                        @foreach ($adherents as $adherent)
-                        @if($adherent->idAsso == $association->idAsso)
-                            @foreach ($users as $user)
-                            @if($user->id == $adherent->id)
-                            <li>{{ $user->name }}</li>
-                            @endif
-                            @endforeach
-                        @endif
-                        @endforeach
-                            </ul>
-                        </h3>
+                    <div class="blop">
+                        <table>
+                            <tr>
+                                <a href="{{$association->site}}"><img width="500px" src="{{$association->logoAsso}}" ></img></a>
+                            <tr>
+                            <tr>
+                                <td><h2>Association :</h2></td>
+                                <td><h2>{{ $association->nomAsso }}</h2></td>
+                            </tr>
+                            <tr>
+                                <td><h2>Email: </h2></td>
+                                <td><h2>{{ Auth::user()->email }}</h2></td>
+                            </tr>
+                            <tr>
+                                <td><h2>Site: </h2></td>
+                                <td><h2><a href="{{$association->site}}">{{$association->site}}</a></h2></td>
+                            </tr>
+                        </table>
+                    </div>
+                        <div class="blop">
+                            <h2>Pistes :</h2>
+                            <h3>
+                                <ul>
+                                @foreach ($pistes as $piste)
+                                @if($piste->idAsso == $association->idAsso)
+                                    @if($piste->idAsso == $association->idAsso)
+                                    <li>{{ $piste->nomPiste }}</li>
+                                    @endif
+                                @endif
+                                @endforeach
+                                </ul>
+                            </h3>
+                        </div>
+                        <div class="blop">
+                            <h2>Adherents :</h2>
+                            <h3>
+                                <ul>
+                                @foreach ($adherents as $adherent)
+                                @if($adherent->idAsso == $association->idAsso)
+                                    @foreach ($users as $user)
+                                    @if($user->id == $adherent->id)
+                                    <li>{{ $user->name }}</li>
+                                    @endif
+                                    @endforeach
+                                @endif
+                                @endforeach
+                                </ul>
+                            </h3>
+                        </div>
 
                     @endif
                     @endforeach
@@ -89,17 +93,17 @@
                     <H2>Mes temps</H2>
                     @foreach ($pistes as $piste)
                         <H3>{{ $piste->nomPiste }}</H3>
-                        <table class="time">
-                            <tr class="time">
-                                <td class="time"><h3>Temps</h3></td>
-                                <td class="time"><h3>Date</h3></td>
+                        <table>
+                            <tr>
+                                <td><h3 class="caseMain">Temps</h3></td>
+                                <td><h3 class="caseMain">Date</h3></td>
                             </tr>
                             @foreach ($temps as $tps)
                             @if ($tps->idAdh == $adherent->idAdh)
                             @if($tps->idPiste == $piste->idPiste)
-                            <tr class="time">
-                                <td class="time">{{$tps->temps}}</td>
-                                <td class="time">{{$tps->created_at}}</td>
+                            <tr>
+                                <td><h3 class="caseMain">{{$tps->temps}}</h3></td>
+                                <td><h3 class="caseMain">{{$tps->created_at}}</h3></td>
                             </tr>
                             @endif
                             @endif
@@ -156,6 +160,25 @@
                 border-style: solid;
                 border-radius: 5px;
             }
-
+            .blop{
+                border-color:#ccccb3;
+                border-width:5px;
+                border-style: solid;
+                border-radius: 15px;
+                padding: 10px;
+                margin: 10px;
+            }
+            .caseMain{
+                padding: 10px;
+                border-width:1px;
+                border-style: solid;
+                border-radius: 10px;
+                background :#c0c0b0; 
+            }
+            .case{
+                padding: 20px;
+                border-radius: 10px;
+                background :#f5f5f0; 
+            }
         </style>
 

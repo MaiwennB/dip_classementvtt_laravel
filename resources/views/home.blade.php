@@ -14,40 +14,47 @@
                     <div class="title">
                     Korigo
                     </div>
-                    <H1>Les associations :</H1>
-                    @foreach($associations as $association)
-                    <a href="{{$association->site}}"><img width="200px" src="{{$association->logoAsso}}" ></img></a>
-                    @endforeach
-                    </br>
-                    <H1>Records :</H1>
-                    @foreach ($pistes as $piste)
-                    <?php $i = 0 ?>
-                        @foreach ($temps as $temp)
-                        @if ($temp->idPiste == $piste->idPiste)
-                            @foreach($adherents as $adherent)
-                            @if($adherent->idAdh == $temp->idAdh)
-                                @foreach($users as $user)
-                                @if($adherent->id == $user->id)
-                                    @foreach($associations as $association)
-                                    @if($piste->idAsso == $association->idAsso)
-                                        @if ($i == 0)
-                                        <h3> Le record pour la {{$piste->nomPiste}}
-                                        est de {{$temp->temps}}, 
-                                        il appartiens à {{$user->name}}
-                                        ( {{$association->nomAsso}} )</h3>
-                                        <?php $i = 1 ?>
+                    <div class="blop">
+                        <H1>Les associations :</H1>
+                        @foreach($associations as $association)
+                        <a href="{{$association->site}}"><img width="200px" src="{{$association->logoAsso}}" ></img></a>
+                        @endforeach
+                        </br>
+                    </div>
+
+                    <div class="blop">
+                        <H1>Records :</H1>
+                        @foreach ($pistes as $piste)
+                        <?php $i = 0 ?>
+                            @foreach ($temps as $temp)
+                            @if ($temp->idPiste == $piste->idPiste)
+                            @if($temp!=[])
+                                @foreach($adherents as $adherent)
+                                @if($adherent->idAdh == $temp->idAdh)
+                                    @foreach($users as $user)
+                                    @if($adherent->id == $user->id)
+                                        @foreach($associations as $association)
+                                        @if($piste->idAsso == $association->idAsso)
+                                            @if ($i == 0)
+                                            <h3 class="blop"> Le record pour la {{$piste->nomPiste}}
+                                            est de {{$temp->temps}}, 
+                                            il appartiens à {{$user->name}}
+                                            ( {{$association->nomAsso}} )</h3>
+                                            <?php $i = 1 ?>
+                                            @endif
                                         @endif
+                                        @endforeach
                                     @endif
                                     @endforeach
+                                
                                 @endif
                                 @endforeach
+                            </tr>
+                            @endif
                             @endif
                             @endforeach
-                        </tr>
-                        @endif
                         @endforeach
-                    @endforeach
-                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,6 +94,14 @@
                 border-radius: 5px;
 
                 
+            }
+            .blop{
+                border-color:#ccccb3;
+                border-width:5px;
+                border-style: solid;
+                border-radius: 15px;
+                padding: 10px;
+                margin: 10px;
             }
 
         </style>
