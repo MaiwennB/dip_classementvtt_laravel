@@ -67,8 +67,15 @@ class PistesController extends Controller
         $piste->Description=$request->Description;
         $piste->idAsso=$request->idAsso;
         $piste->save();
-        return view('account');
+
         // return Pistes::find($piste->idPiste);
+        $piste1 = null;
+        $temps = Temps::orderBy('temps')->get();
+        $pistes=Pistes::all();
+        $associations=Associations::all();
+        $adherents=Adherents::all();
+        $users=User::all();
+        return view('pistes',['pistes'=>$pistes,'adherents'=>$adherents,'associations'=>$associations, 'piste1'=>$piste1, 'temps'=>$temps, 'users'=>$users]);
     }
 
     /**

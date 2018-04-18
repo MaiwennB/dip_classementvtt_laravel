@@ -105,8 +105,8 @@
                             @if ($tps->idAdh == $adherent->idAdh)
                             @if($tps->idPiste == $piste->idPiste)
                             <tr>
-                                <td><h3 class="caseMain">{{$tps->temps}}</h3></td>
-                                <td><h3 class="caseMain">{{$tps->created_at}}</h3></td>
+                                <td><h3 class="case">{{$tps->temps}}</h3></td>
+                                <td><h3 class="case">{{$tps->created_at}}</h3></td>
                             </tr>
                             @endif
                             @endif
@@ -135,15 +135,12 @@
                 color: #636b6f;
                 background-repeat: no-repeat;
                 background-color:#636b6f;
-
             }
             .title {
                 font-size: 150px;
                 color:#f5f5f0;
                 font-family:Arial, Helvetica, sans-serif;
-
             }
-
             .links > a{
                 /* 636b6f */
                 background-color: #f5f5f0;
@@ -156,7 +153,6 @@
                 border-width:2px;
                 border-style: solid;
                 border-radius: 5px;
-
                 
             }
             .time{
@@ -185,4 +181,3 @@
                 background :#f5f5f0; 
             }
         </style>
-
