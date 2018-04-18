@@ -10,13 +10,43 @@
         </div>
             <div class="panel panel-default">
                 <!-- <div class="panel-heading">Dashboard</div> -->
-                
                 <div class="panel-body">
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif -->
+                    <div class="title">
+                    Korigo
+                    </div>
+                    <H1>Les associations :</H1>
+                    @foreach($associations as $association)
+                        <h3>{{$association->nomAsso}}</h3>
+                    @endforeach
+
+                    <H1>Records :</H1>
+                    @foreach ($pistes as $piste)
+                    <?php $i = 0 ?>
+                        @foreach ($temps as $temp)
+                        @if ($temp->idPiste == $piste->idPiste)
+                            @foreach($adherents as $adherent)
+                            @if($adherent->idAdh == $temp->idAdh)
+                                @foreach($users as $user)
+                                @if($adherent->id == $user->id)
+                                    @foreach($associations as $association)
+                                    @if($piste->idAsso == $association->idAsso)
+                                        @if ($i == 0)
+                                        <h3> Le record pour la {{$piste->nomPiste}}
+                                        est de {{$temp->temps}}, 
+                                        il appartiens à {{$user->name}}
+                                        ( {{$association->nomAsso}} )</h3>
+                                        <?php $i = 1 ?>
+                                        @endif
+                                    @endif
+                                    @endforeach
+                                @endif
+                                @endforeach
+                            @endif
+                            @endforeach
+                        </tr>
+                        @endif
+                        @endforeach
+                    @endforeach
                     
                 </div>
             </div>
@@ -24,6 +54,11 @@
     </div>
 </div>
 <style>
+            .title {
+                font-size: 150px;
+                color:#392613;
+
+            }
             .container {
                 color: #636b6f;
                 background-repeat: repeat;
@@ -35,12 +70,6 @@
                 color: #636b6f;
                 background-repeat: no-repeat;
                 background-color:#636b6f;
-
-            }
-            .title {
-                font-size: 150px;
-                color:#f5f5f0;
-                font-family:Arial, Helvetica, sans-serif;
 
             }
 

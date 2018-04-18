@@ -10,28 +10,25 @@
         </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-
+                    <!-- ******************* ASSOCIATION ********************** -->
                     @foreach ($associations as $association)
                     @if ($association->idUser == Auth::user()->id)
-                        <h2>Mon compte Association</h2>
-                        <table>
+                    <H1>Espace association</H1>
+                    <table>
+                        <tr>
+                            <td><h3>Association :</h3></td>
+                            <td><h3>{{ $association->nomAsso }}</h3></td>
+                        </tr>
                         <tr>
 
-                            <td><h4>Email: </h4></td>
-                            <td><h4>{{ Auth::user()->email }}</h4></td>
-                        <tr>
+                            <td><h3>Email: </h3></td>
+                            <td><h3>{{ Auth::user()->email }}</h3></td>
                         </tr>
-                            <td><h4>NOM Prénom :</h4></td>
-                            <td><h4>{{ Auth::user()->name }}</h4></td>
-                        </tr>
-                        </tr>
-                            <td><h4>Association :</h4></td>
-                            <td><h4>{{ $association->nomAsso }}</h4></td>
-                        </tr>
+                        
                     </table>
 
-                    <h4>Pistes :</h4>
-                        <h4>
+                    <h3>Pistes :</h3>
+                        <h3>
                             <ul>
                         @foreach ($pistes as $piste)
                         @if($piste->idAsso == $association->idAsso)
@@ -41,10 +38,10 @@
                         @endif
                         @endforeach
                             </ul>
-                        </h4>
+                        </h3>
 
-                        <h4>Adherents :</h4>
-                        <h4>
+                        <h3>Adherents :</h3>
+                        <h3>
                             <ul>
                         @foreach ($adherents as $adherent)
                         @if($adherent->idAsso == $association->idAsso)
@@ -56,29 +53,29 @@
                         @endif
                         @endforeach
                             </ul>
-                        </h4>
+                        </h3>
 
                     @endif
                     @endforeach
-
+                    <!-- ******************* END ASSOCIATION ********************** -->
                    
                     @foreach ($adherents as $adherent)
                     @if ($adherent->id == Auth::user()->id)
-                    <h2>Mon compte Adhérent</h2>
+                    <H1>Mon compte</H1>
                     <table>
                         <tr>
-                            <td><h4>Email: </h4></td>
-                            <td><h4>{{ Auth::user()->email }}</h4></td>
+                            <td><h3>Email: </h3></td>
+                            <td><h3>{{ Auth::user()->email }}</h3></td>
                         <tr>
                         </tr>
-                            <td><h4>NOM Prénom :</h4></td>
-                            <td><h4>{{ Auth::user()->name }}</h4></td>
+                            <td><h3>NOM Prénom :</h3></td>
+                            <td><h3>{{ Auth::user()->name }}</h3></td>
                         </tr>
                         </tr>
                             @foreach ($associations as $association)
                             @if ($association->idAsso == $adherent->idAsso)
-                            <td><h4>Association :</h4></td>
-                            <td><h4>{{ $association->nomAsso }}</h4></td>
+                            <td><h3>Association :</h3></td>
+                            <td><h3>{{ $association->nomAsso }}</h3></td>
                             @endif
                             @endforeach
                         </tr>
@@ -89,8 +86,8 @@
                         <H3>{{ $piste->nomPiste }}</H3>
                         <table class="time">
                             <tr class="time">
-                                <td class="time"><h4>Temps</h4></td>
-                                <td class="time"><h4>Date</h4></td>
+                                <td class="time"><h3>Temps</h3></td>
+                                <td class="time"><h3>Date</h3></td>
                             </tr>
                             @foreach ($temps as $tps)
                             @if ($tps->idAdh == $adherent->idAdh)

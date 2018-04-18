@@ -10,7 +10,7 @@
         </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    
+                    <H1>Les pistes</H1>
                     @foreach ($associations as $association)
                     @if ($association->idUser == Auth::user()->id)
                     <form  id="formulaire2" action="{{ route('create')}}" method=POST>    
@@ -61,7 +61,8 @@
 
                     <h2>Info de la piste</h2>
                         <H3>{{ $piste1->nomPiste }}</H3>
-                        {{ $piste1->Description }}
+                        <img src="{{$piste1->urlPhoto}}" width=500px></img>
+                        <p>{{ $piste1->Description }}</p>
                         </br>
                     <H2>Classement</H2>
                     <table class="time">
@@ -74,7 +75,7 @@
                         <tr class="time">
                             <td class="time">{{ $temp->temps }}</td>
                             @foreach($adherents as $adherent)
-                                @if($adherent->idAdh == $temp->idAdh)
+                            @if($adherent->idAdh == $temp->idAdh)
                                 @foreach($users as $user)
                                 @if($adherent->id == $user->id)
                                     <td class="time">{{ $user->name }}</td>
@@ -84,8 +85,7 @@
                             @endforeach
                         </tr>
                         @endif
-                    
-                    @endforeach
+                        @endforeach
                     @endif
                     </table>
                 </div>
