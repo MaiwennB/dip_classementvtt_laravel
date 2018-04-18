@@ -62,7 +62,7 @@
                     <h2>Info de la piste</h2>
                     @foreach($associations as $association)
                     @if($association->idAsso == $piste1->idAsso)
-                        <H3>{{ $piste1->nomPiste }} ({{$association->nomAsso}})</H3>
+                        <H3>{{ $piste1->nomPiste }} ( {{$association->nomAsso}} )</H3>
                     @endif
                     @endforeach
                         <img src="{{$piste1->urlPhoto}}" width=500px></img>

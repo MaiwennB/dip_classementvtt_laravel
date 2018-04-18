@@ -16,9 +16,9 @@
                     </div>
                     <H1>Les associations :</H1>
                     @foreach($associations as $association)
-                        <h3>{{$association->nomAsso}}</h3>
+                    <a href="{{$association->site}}"><img width="200px" src="{{$association->logoAsso}}" ></img></a>
                     @endforeach
-
+                    </br>
                     <H1>Records :</H1>
                     @foreach ($pistes as $piste)
                     <?php $i = 0 ?>
