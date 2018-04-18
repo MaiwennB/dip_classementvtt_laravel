@@ -17,20 +17,19 @@
                     <table>
                         <tr>
                             <a href="{{$association->site}}"><img width="500px" src="{{$association->logoAsso}}" ></img></a>
-                            
-                            
                         <tr>
                         <tr>
-                            
                             <td><h3>Association :</h3></td>
                             <td><h3>{{ $association->nomAsso }}</h3></td>
                         </tr>
                         <tr>
-                            
                             <td><h3>Email: </h3></td>
                             <td><h3>{{ Auth::user()->email }}</h3></td>
                         </tr>
-                        
+                        <tr>
+                            <td><h3>Site: </h3></td>
+                            <td><h3><a href="{{$association->site}}">{{$association->site}}</a></h3></td>
+                        </tr>
                     </table>
 
                     <h3>Pistes :</h3>
